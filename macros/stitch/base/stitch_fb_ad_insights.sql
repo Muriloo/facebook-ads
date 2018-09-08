@@ -18,14 +18,15 @@ select
   clicks,
   unique_clicks,
   spend,
-  frequency,
+  -- frequency,
   reach,
-  nullif(objective,'') as objective,
-  canvas_avg_view_percent,
-  canvas_avg_view_time,
-  inline_link_clicks,
-  inline_post_engagement,
-  unique_inline_link_clicks
+  total_action_value
+  -- nullif(objective,'') as objective,
+  -- canvas_avg_view_percent,
+  -- canvas_avg_view_time,
+  -- inline_link_clicks,
+  -- inline_post_engagement,
+  -- unique_inline_link_clicks
 from
   {{ var('ads_insights_table') }}
 
@@ -46,14 +47,15 @@ select
   clicks,
   unique_clicks,
   spend,
-  frequency,
+  -- frequency,
   reach,
-  objective as objective,
-  canvas_avg_view_percent,
-  canvas_avg_view_time,
-  inline_link_clicks,
-  inline_post_engagement,
-  unique_inline_link_clicks
+  total_action_value
+  -- nullif(objective,'') as objective,
+  -- canvas_avg_view_percent,
+  -- canvas_avg_view_time,
+  -- inline_link_clicks,
+  -- inline_post_engagement,
+  -- unique_inline_link_clicks
 from {{ var('ads_insights_table') }}
 
 {% endmacro %}
