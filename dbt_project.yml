@@ -12,13 +12,16 @@ models:
   facebook_ads:
     vars:
       ads_table: "br_facebook.ads"
-      ad_creatives_table: "br_facebook.ad_creatives"
+      adcreatives_table: "br_facebook.adcreative"
       adsets_table: "br_facebook.adsets"
       campaigns_table: "br_facebook.campaigns"
       ads_insights_table: "br_facebook.ads_insights"
     base:
-        materialized: table
         schema: staging
         bind: false
-    transform:
+    transformation:
+        schema: staging
+        materialized: table
+    marketing:
         schema: analytics
+        materialized: table

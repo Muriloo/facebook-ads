@@ -1,6 +1,6 @@
 with ads_xf_ads as (
 
-  select * from {{ref('fb_ads')}}
+  select * from {{ref('b_fb_ads')}}
 
 ), ads_xf_windowed as (
 

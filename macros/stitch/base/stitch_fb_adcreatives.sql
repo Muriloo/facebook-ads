@@ -1,11 +1,11 @@
-{% macro stitch_fb_ad_creatives() %}
+{% macro stitch_fb_adcreatives() %}
 
-    {{ adapter_macro('facebook_ads.stitch_fb_ad_creatives') }}
+    {{ adapter_macro('facebook_ads.stitch_fb_adcreatives') }}
 
 {% endmacro %}
 
 
-{% macro default__stitch_fb_ad_creatives() %}
+{% macro default__stitch_fb_adcreatives() %}
 
 with base as (
 
@@ -13,12 +13,12 @@ with base as (
     id,
     lower(nullif(url_tags, '')) as url_tags,
     lower(coalesce(
-      nullif(object_story_spec__link_data__call_to_action__value__link, ''),
+      -- nullif(object_story_spec__link_data__call_to_action__value__link, ''), -- this row is commented because this field doesn't exist
       nullif(object_story_spec__video_data__call_to_action__value__link, ''),
       nullif(object_story_spec__link_data__link, '')
     )) as url
   from
-    {{ var('ad_creatives_table') }}
+    {{ var('adcreatives_table') }}
 
 ), splits as (
 
@@ -46,7 +46,7 @@ from splits
 {% endmacro %}
 
 
-{% macro snowflake__stitch_fb_ad_creatives() %}
+{% macro snowflake__stitch_fb_adcreatives() %}
 
 with base as (
 
@@ -59,7 +59,7 @@ with base as (
           nullif(object_story_spec['link_data']['link']::varchar, '')
         )) as url
 
-    from {{ var('ad_creatives_table') }}
+    from {{ var('adcreatives_table') }}
 
 ),
 
@@ -76,7 +76,7 @@ parsed as (
         nullif(parse_url(url)['parameters']['utm_medium']::varchar, '') as utm_medium,
         nullif(parse_url(url)['parameters']['utm_content']::varchar, '') as utm_content,
         nullif(parse_url(url)['parameters']['utm_term']::varchar, '') as utm_term
-    from base 
+    from base
 
 )
 

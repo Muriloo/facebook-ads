@@ -3,7 +3,7 @@
 
 with adsets_xf_adsets as (
 
-    select  * from {{ref('fb_ads_adsets')}}
+    select  * from {{ref('b_fb_ads_adsets')}}
 
 ),
 

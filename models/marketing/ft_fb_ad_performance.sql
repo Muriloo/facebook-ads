@@ -1,12 +1,12 @@
 with fb_keyword_performance as (
 
-    select * from {{ref('fb_ad_insights_xf')}}
+    select * from {{ref('staging_fb_ad_insights')}}
 
 ),
 
 fb_keyword_performance_agg as (
 
-    select 
+    select
         date_day as campaign_date,
         url_host,
         url_path,
@@ -17,6 +17,7 @@ fb_keyword_performance_agg as (
         utm_term,
         'facebook ads' as platform,
         sum(clicks) as clicks,
+        sum(unique_clicks) as unique_clicks,
         sum(impressions) as impressions,
         sum(spend) as spend
     from fb_keyword_performance
