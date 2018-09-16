@@ -18,7 +18,20 @@ with base as (
       nullif(object_story_spec__link_data__link, '')
     )) as url
   from
-    {{ var('adcreatives_table') }}
+    {{ var('account_1_schema') }}.{{ var('adcreatives_table') }}
+
+  UNION ALL
+
+  select
+    id,
+    lower(nullif(url_tags, '')) as url_tags,
+    lower(coalesce(
+      -- nullif(object_story_spec__link_data__call_to_action__value__link, ''), -- this row is commented because this field doesn't exist
+      nullif(object_story_spec__video_data__call_to_action__value__link, ''),
+      nullif(object_story_spec__link_data__link, '')
+    )) as url
+  from
+    {{ var('account_2_schema') }}.{{ var('adcreatives_table') }}
 
 ), splits as (
 
@@ -59,7 +72,20 @@ with base as (
           nullif(object_story_spec['link_data']['link']::varchar, '')
         )) as url
 
-    from {{ var('adcreatives_table') }}
+    from {{ var('account_1_schema') }}.{{ var('adcreatives_table') }}
+
+    UNION ALL
+
+    select
+
+        id,
+        lower(coalesce(
+          nullif(object_story_spec['link_data']['call_to_action']['value']['link']::varchar, ''),
+          nullif(object_story_spec['video_data']['call_to_action']['value']['link']::varchar, ''),
+          nullif(object_story_spec['link_data']['link']::varchar, '')
+        )) as url
+
+    from {{ var('account_2_schema') }}.{{ var('adcreatives_table') }}
 
 ),
 

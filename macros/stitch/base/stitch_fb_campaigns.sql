@@ -11,6 +11,14 @@ select
   nullif(id,'') as id,
   nullif(name,'') as name
 from
-  {{ var('campaigns_table') }}
+  {{ var('account_1_schema') }}.{{ var('campaigns_table') }}
+
+UNION ALL
+
+select
+  nullif(id,'') as id,
+  nullif(name,'') as name
+from
+  {{ var('account_2_schema') }}.{{ var('campaigns_table') }}
 
 {% endmacro %}

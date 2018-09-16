@@ -11,11 +11,15 @@ data-paths: ["data"]       # load CSVs from this directory with `dbt seed`
 models:
   facebook_ads:
     vars:
-      ads_table: "br_facebook.ads"
-      adcreatives_table: "br_facebook.adcreative"
-      adsets_table: "br_facebook.adsets"
-      campaigns_table: "br_facebook.campaigns"
-      ads_insights_table: "br_facebook.ads_insights"
+      ads_table: "ads"
+      adcreatives_table: "adcreative"
+      adsets_table: "adsets"
+      campaigns_table: "campaigns"
+      ads_insights_table: "ads_insights"
+      account_1_schema: "br_facebook"
+      account_2_schema: "br_facebook_2"
+      account_1_currency: "BRL"
+      account_2_currency: "BRL"
     base:
         schema: staging
         bind: false

@@ -20,7 +20,21 @@ select distinct
   created_time as created_at,
   updated_time as updated_at
 from
-  {{ var('ads_table') }}
+  {{ var('account_1_schema') }}.{{ var('ads_table') }}
+
+UNION ALL
+
+select distinct
+  nullif(id,'') as id,
+  nullif(account_id,'') as account_id,
+  nullif(adset_id,'') as adset_id,
+  nullif(campaign_id,'') as campaign_id,
+  nullif(name,'') as name,
+  nullif(creative__id,'') as creative_id,
+  created_time as created_at,
+  updated_time as updated_at
+from
+  {{ var('account_2_schema') }}.{{ var('ads_table') }}
 
 {% endmacro %}
 
@@ -37,6 +51,20 @@ select distinct
   created_time as created_at,
   updated_time as updated_at
 from
-  {{ var('ads_table') }}
+  {{ var('account_1_schema') }}.{{ var('ads_table') }}
+
+UNION ALL
+
+select distinct
+  nullif(id,'') as id,
+  nullif(account_id,'') as account_id,
+  nullif(adset_id,'') as adset_id,
+  nullif(campaign_id,'') as campaign_id,
+  nullif(name,'') as name,
+  nullif(creative['id'],'')::bigint as creative_id,
+  created_time as created_at,
+  updated_time as updated_at
+from
+  {{ var('account_2_schema') }}.{{ var('ads_table') }}
 
 {% endmacro %}
