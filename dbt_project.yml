@@ -20,12 +20,5 @@ models:
       account_1_schema: #"value"
       account_1_currency: #"value"
       account_2_currency: #"value"
-    base:
-        schema: staging
-        bind: false
-    transformation:
-        schema: staging
-        materialized: table
-    marketing:
-        schema: analytics
-        materialized: table
+      account_1_store_id: #"value"
+      account_2_store_id: #"value"

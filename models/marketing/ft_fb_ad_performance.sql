@@ -9,6 +9,7 @@ fb_keyword_performance_agg as (
     select
         date_day as campaign_date,
         account_currency,
+        dim_country_fk,
         url_host,
         url_path,
         utm_source,
@@ -23,7 +24,7 @@ fb_keyword_performance_agg as (
         sum(spend) as spend,
         sum(spend_usd) as spend_usd
     from fb_keyword_performance
-    group by 1, 2, 3, 4, 5, 6, 7, 8, 9
+    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 
 )
 

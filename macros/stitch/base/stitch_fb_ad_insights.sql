@@ -22,7 +22,8 @@ select
   reach,
   total_action_value,
   '{{ var("account_1_currency")}}' as account_currency,
-  spend*fx.fx_rate as spend_usd
+  spend*fx.fx_rate as spend_usd,
+  {{ var("account_1_store_id")}} as dim_country_fk
   -- nullif(objective,'') as objective,
   -- canvas_avg_view_percent,
   -- canvas_avg_view_time,
@@ -50,7 +51,8 @@ select
   reach,
   total_action_value,
   '{{ var("account_2_currency")}}' as account_currency,
-  spend*fx.fx_rate as spend_usd
+  spend*fx.fx_rate as spend_usd,
+  {{ var("account_2_store_id")}} as dim_country_fk
   -- nullif(objective,'') as objective,
   -- canvas_avg_view_percent,
   -- canvas_avg_view_time,
@@ -80,7 +82,8 @@ select
   reach,
   total_action_value,
   '{{ var("account_1_currency")}}' as account_currency,
-  spend*fx.fx_rate as spend_usd
+  spend*fx.fx_rate as spend_usd,
+  {{ var("account_1_store_id")}} as dim_country_fk
   -- nullif(objective,'') as objective,
   -- canvas_avg_view_percent,
   -- canvas_avg_view_time,
@@ -107,7 +110,8 @@ select
   reach,
   total_action_value,
   '{{ var("account_2_currency")}}' as account_currency,
-  spend*fx.fx_rate as spend_usd
+  spend*fx.fx_rate as spend_usd,
+  {{ var("account_2_store_id")}} as dim_country_fk
   -- nullif(objective,'') as objective,
   -- canvas_avg_view_percent,
   -- canvas_avg_view_time,

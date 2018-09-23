@@ -23,6 +23,7 @@ with ads as (
     ,ai.date_day as campaign_date
     ,ai.account_name as account_name
     ,ai.account_currency as account_currency
+    ,ai.dim_country_fk as dim_country_fk
     ,'facebook_br' as data_source
     ,'paid_social' as group_channel
     ,'paid_social' as medium
@@ -36,7 +37,7 @@ with ads as (
   left join campaigns c on c.id = ai.campaign_id
   left join adsets s on s.id = adset_id
   left join ads a on a.id = ai.ad_id
-  group by 1,2,3,4,5,6
+  group by 1,2,3,4,5,6,7
 )
 
 select
