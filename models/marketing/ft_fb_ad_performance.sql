@@ -9,7 +9,7 @@ fb_keyword_performance_agg as (
     select
         date_day as campaign_date,
         account_currency,
-        dim_country_fk,
+        dim_store_fk,
         url_host,
         url_path,
         utm_source,

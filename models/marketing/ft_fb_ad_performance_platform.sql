@@ -23,7 +23,7 @@ with ads as (
     ,ai.date_day as campaign_date
     ,ai.account_name as account_name
     ,ai.account_currency as account_currency
-    ,ai.dim_country_fk as dim_country_fk
+    ,ai.dim_store_fk as dim_store_fk
     ,'facebook_br' as data_source
     ,'paid_social' as group_channel
     ,'paid_social' as medium
