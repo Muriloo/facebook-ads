@@ -25,7 +25,7 @@ with ads as (
     ,ai.account_currency as account_currency
     ,ai.dim_store_fk as dim_store_fk
     ,'facebook_br' as data_source
-    ,'paid_social' as group_channel
+    ,'Paid Social' as group_channel
     ,'paid_social' as medium
     ,'facebook' as "source"
     ,sum(impressions) as impressions
