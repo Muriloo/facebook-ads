@@ -12,6 +12,8 @@ fb_keyword_performance_agg as (
         dim_store_fk,
         url_host,
         url_path,
+        'paid' as traffic_type,
+        'Paid Social' as group_channel,
         utm_source,
         utm_medium,
         utm_campaign,
@@ -24,7 +26,7 @@ fb_keyword_performance_agg as (
         sum(spend) as spend,
         sum(spend_usd) as spend_usd
     from fb_keyword_performance
-    group by 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    group by 1, 2, 3, 4, 5, 8, 9, 10, 11, 12
 
 )
 
