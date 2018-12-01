@@ -12,7 +12,7 @@ fb_keyword_performance_agg as (
         dim_store_fk,
         url_host,
         url_path,
-        'paid' as traffic_type,
+        'Paid' as traffic_type,
         'Paid Social' as group_channel,
         utm_source,
         utm_medium,
