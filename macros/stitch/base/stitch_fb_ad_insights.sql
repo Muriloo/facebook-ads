@@ -32,7 +32,7 @@ select
   -- unique_inline_link_clicks
 from
   {{ var('account_1_schema') }}.{{ var('ads_insights_table') }}
-left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_1_currency")}}'
+left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_1_currency")}}' and fx.currency_to = 'USD'
 
 UNION ALL
 
@@ -61,7 +61,7 @@ select
   -- unique_inline_link_clicks
 from
   {{ var('account_2_schema') }}.{{ var('ads_insights_table') }}
-left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_2_currency")}}'
+left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_2_currency")}}' and fx.currency_to = 'USD'
 {% endmacro %}
 
 
@@ -91,7 +91,7 @@ select
   -- inline_post_engagement,
   -- unique_inline_link_clicks
 from {{ var('account_1_schema') }}.{{ var('ads_insights_table') }}
-left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_1_currency")}}'
+left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_1_currency")}}' and fx.currency_to = 'USD'
 
 UNION ALL
 
@@ -119,5 +119,5 @@ select
   -- inline_post_engagement,
   -- unique_inline_link_clicks
 from {{ var('account_2_schema') }}.{{ var('ads_insights_table') }}
-left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_2_currency")}}'
+left join {{ref('map_fx_rate')}} fx on fx.currency_from = '{{ var("account_2_currency")}}' and fx.currency_to = 'USD'
 {% endmacro %}
