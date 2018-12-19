@@ -24,7 +24,7 @@ with ads as (
     ,ai.account_name as account_name
     ,ai.account_currency as account_currency
     ,ai.dim_store_fk as dim_store_fk
-    ,'facebook_br' as data_source
+    ,'facebook' as data_source
     ,'Paid' as traffic_type
     ,'Paid Social' as group_channel
     ,'paid_social' as medium
