@@ -7,26 +7,19 @@
 
 {% macro default__stitch_fb_ads_campaigns() %}
 
-select
-  nullif(id,'') as id,
-  nullif(name,'') as name
-from
-  {{ var('account_1_schema') }}.{{ var('campaigns_table') }}
-
-UNION ALL
-
-select
-  nullif(id,'') as id,
-  nullif(name,'') as name
-from
-  {{ var('account_2_schema') }}.{{ var('campaigns_table') }}
-
-
-UNION ALL
+WITH united_tables as (
+  {{ dbt_utils.union_tables(
+      tables=[var('account_1_schema') ~ "." ~ var('campaigns_table')
+              ,var('account_2_schema') ~ "." ~ var('campaigns_table')
+              ,var('account_3_schema') ~ "." ~ var('campaigns_table')
+              ]
+  ) }}
+)
 
 select
   nullif(id,'') as id,
   nullif(name,'') as name
 from
-  {{ var('account_3_schema') }}.{{ var('campaigns_table') }}
+  united_tables
+
 {% endmacro %}

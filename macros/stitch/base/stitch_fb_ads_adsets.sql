@@ -7,6 +7,14 @@
 
 {% macro default__stitch_fb_ads_adsets() %}
 
+WITH united_tables as (
+  {{ dbt_utils.union_tables(
+      tables=[var('account_1_schema') ~ "." ~ var('adsets_table')
+              ,var('account_2_schema') ~ "." ~ var('adsets_table')
+              ,var('account_3_schema') ~ "." ~ var('adsets_table')
+              ]
+  ) }}
+)
 select
   id,
   nullif(name,'') as name,
@@ -15,30 +23,6 @@ select
   created_time,
   nullif(effective_status,'') as effective_status
 from
-  {{ var('account_1_schema') }}.{{ var('adsets_table') }}
-
-UNION ALL
-
-select
-  id,
-  nullif(name,'') as name,
-  nullif(account_id,'') as account_id,
-  nullif(campaign_id,'') as campaign_id,
-  created_time,
-  nullif(effective_status,'') as effective_status
-from
-  {{ var('account_2_schema') }}.{{ var('adsets_table') }}
-
-UNION ALL
-
-select
-  id,
-  nullif(name,'') as name,
-  nullif(account_id,'') as account_id,
-  nullif(campaign_id,'') as campaign_id,
-  created_time,
-  nullif(effective_status,'') as effective_status
-from
-  {{ var('account_3_schema') }}.{{ var('adsets_table') }}
+  united_tables
 
 {% endmacro %}
