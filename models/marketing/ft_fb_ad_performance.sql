@@ -19,12 +19,11 @@ fb_keyword_performance_agg as (
         utm_campaign,
         utm_content,
         utm_term,
-        'facebook ads' as platform,
+        'facebook' as platform,
         sum(clicks) as clicks,
         sum(unique_clicks) as unique_clicks,
         sum(impressions) as impressions,
-        sum(spend) as spend,
-        sum(spend_usd) as spend_usd
+        sum(spend) as spend
     from fb_keyword_performance
     group by 1, 2, 3, 4, 5, 8, 9, 10, 11, 12
 
