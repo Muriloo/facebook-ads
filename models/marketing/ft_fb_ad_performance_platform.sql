@@ -32,8 +32,7 @@ with ads as (
     ,sum(impressions) as impressions
     ,sum(clicks) as clicks
     ,sum(unique_clicks) as unique_clicks
-    ,sum(spend) as spend
-    ,sum(spend_usd) as spend_usd
+    ,sum(spend) as spend -- spend in account_currency
   from insights ai
   left join campaigns c on c.id = ai.campaign_id
   left join adsets s on s.id = adset_id

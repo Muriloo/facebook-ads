@@ -12,6 +12,8 @@ WITH united_tables as (
       tables=[var('account_1_schema') ~ "." ~ var('adsets_table')
               ,var('account_2_schema') ~ "." ~ var('adsets_table')
               ,var('account_3_schema') ~ "." ~ var('adsets_table')
+              ,var('account_4_schema') ~ "." ~ var('adsets_table')
+              ,var('account_5_schema') ~ "." ~ var('adsets_table')
               ]
   ) }}
 )
