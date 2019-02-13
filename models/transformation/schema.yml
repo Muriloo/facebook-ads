@@ -10,6 +10,11 @@ staging_fb_ad_insights:
         unique:
             - id
 
+staging_fb_ad_insights_region:
+    constraints:
+        unique:
+            - id
+
 staging_fb_adsets:
     constraints:
         not_null:
